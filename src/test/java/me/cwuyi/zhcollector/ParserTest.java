@@ -24,9 +24,9 @@ public class ParserTest {
         //while ((line = reader.readLine())!=null) {
         //    page += line;
         //}
-        ZHUser zhUser = new ZHUser();
-        UserParser.parseUserBasicInfo(page, "lidang", zhUser);
-        System.out.println(JSON.toJSON(zhUser));
+        //ZHUser zhUser = new ZHUser();
+        //UserParser.parseUserBasicInfo(page, "lidang", zhUser);
+        //System.out.println(JSON.toJSON(zhUser));
     }
 
     @Test
@@ -38,9 +38,9 @@ public class ParserTest {
         //    page += line;
         //}
 
-        List<ZHAnsw> list = UserParser.parseUserAnsw(page, "lidang");
+        //List<ZHAnsw> list = UserParser.parseUserAnsw(page, "lidang");
 
-        System.out.println(JSON.toJSON(list));
+       // System.out.println(JSON.toJSON(list));
 
     }
 
@@ -53,9 +53,9 @@ public class ParserTest {
         //    page += line;
         //}
 
-        List<ZHQues> list = UserParser.parseUserQues(page, "lidang");
+        //List<ZHQues> list = UserParser.parseUserQues(page, "lidang");
 
-        System.out.println(JSON.toJSON(list));
+        //System.out.println(JSON.toJSON(list));
     }
 
     @Test
@@ -67,9 +67,9 @@ public class ParserTest {
         //    page += line;
         //}
 
-        List<String> list = UserParser.parseFollowingship(page, "lidang");
+        //List<String> list = UserParser.parseFollowingship(page, "lidang");
 
-        System.out.println(JSON.toJSON(list));
+        //System.out.println(JSON.toJSON(list));
 
     }
 
@@ -82,9 +82,9 @@ public class ParserTest {
         //    page += line;
         //}
 
-        List<String> list = UserParser.parseTopicFollower(page);
+        //List<String> list = UserParser.parseTopicFollower(page);
 
-        System.out.println(JSON.toJSON(list));
+        //System.out.println(JSON.toJSON(list));
 
     }
 
