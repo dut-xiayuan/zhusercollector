@@ -34,6 +34,7 @@ public class Crawler {
             CloseableHttpResponse response = client.execute(get);
             String page = EntityUtils.toString(response.getEntity());
             String xsrfValue = Jsoup.parse(page).getElementsByAttributeValue("name", "_xsrf").get(0).attr("value");
+            response.close();
 
 
             List<NameValuePair> pairs = new LinkedList<NameValuePair>();
@@ -41,14 +42,13 @@ public class Crawler {
             pairs.add(new BasicNameValuePair("password", "4011604A"));
             pairs.add(new BasicNameValuePair("email", "xiayuan.y@foxmail.com"));
             pairs.add(new BasicNameValuePair("captcha_type", "cn"));
-            pairs.add(new BasicNameValuePair("remember_me", "true"));
 
             UrlEncodedFormEntity entity = new UrlEncodedFormEntity(pairs, Consts.UTF_8);
-            String cap_id = "cap_id=\"NDE2YmYxNjY4OGVlNDlmYzkzMjM3NzYyOTkzMTllOTg=|1507945486|b71b7b1bfae80df8f83b87e9238c2892288dc264\"";
+            String cap_id = "cap_id=\"NGFiOTUzMTEyYWVmNDlhM2JlNWQ0MjlhMTc4NDk5MmU=|1507950349|06f27e93141c7802c8dff85085baf998f256beda\";";
 
 
             HttpPost post = new HttpPost("https://www.zhihu.com/login/email");
-            post.setHeader("Cookie", cap_id+";_xsrf:"+xsrfValue);
+            post.setHeader("Cookie", cap_id);
             post.setHeader("User-Agent", "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:47.0) Gecko/20100101 Firefox/47.0");
             post.setEntity(entity);
 
