@@ -18,12 +18,12 @@ public class ParserTest {
 
     @Test
     public void testParseUserBasicInfo() throws Exception {
-        BufferedReader reader = new BufferedReader(new FileReader("/home/xia/userInfo.html"));
+        //BufferedReader reader = new BufferedReader(new FileReader("/home/xia/userInfo.html"));
         String page = "";
         String line = "";
-        while ((line = reader.readLine())!=null) {
-            page += line;
-        }
+        //while ((line = reader.readLine())!=null) {
+        //    page += line;
+        //}
         ZHUser zhUser = new ZHUser();
         UserParser.parseUserBasicInfo(page, "lidang", zhUser);
         System.out.println(JSON.toJSON(zhUser));
@@ -31,12 +31,12 @@ public class ParserTest {
 
     @Test
     public void testParseUserAnsw() throws Exception {
-        BufferedReader reader = new BufferedReader(new FileReader("/home/xia/ques.json"));
+        //BufferedReader reader = new BufferedReader(new FileReader("/home/xia/ques.json"));
         String page = "";
         String line = "";
-        while ((line = reader.readLine())!=null) {
-            page += line;
-        }
+        //while ((line = reader.readLine())!=null) {
+        //    page += line;
+        //}
 
         List<ZHAnsw> list = UserParser.parseUserAnsw(page, "lidang");
 
@@ -46,12 +46,12 @@ public class ParserTest {
 
     @Test
     public void testParseUserQues() throws Exception {
-        BufferedReader reader = new BufferedReader(new FileReader("/home/xia/answ.json"));
+        //BufferedReader reader = new BufferedReader(new FileReader("/home/xia/answ.json"));
         String page = "";
         String line = "";
-        while ((line = reader.readLine())!=null) {
-            page += line;
-        }
+        //while ((line = reader.readLine())!=null) {
+        //    page += line;
+        //}
 
         List<ZHQues> list = UserParser.parseUserQues(page, "lidang");
 
@@ -60,12 +60,12 @@ public class ParserTest {
 
     @Test
     public void testParseFollowingship() throws Exception {
-        BufferedReader reader = new BufferedReader(new FileReader("/home/xia/followship.json"));
+        //BufferedReader reader = new BufferedReader(new FileReader("/home/xia/followship.json"));
         String page = "";
         String line = "";
-        while ((line = reader.readLine())!=null) {
-            page += line;
-        }
+        //while ((line = reader.readLine())!=null) {
+        //    page += line;
+        //}
 
         List<String> list = UserParser.parseFollowingship(page, "lidang");
 
@@ -75,12 +75,12 @@ public class ParserTest {
 
     @Test
     public void testParseTopicFollower() throws Exception {
-        BufferedReader reader = new BufferedReader(new FileReader("/home/xia/topicfollow.json"));
+        //BufferedReader reader = new BufferedReader(new FileReader("/home/xia/topicfollow.json"));
         String page = "";
         String line = "";
-        while ((line = reader.readLine())!=null) {
-            page += line;
-        }
+        //while ((line = reader.readLine())!=null) {
+        //    page += line;
+        //}
 
         List<String> list = UserParser.parseTopicFollower(page);
 
