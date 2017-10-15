@@ -1,6 +1,7 @@
 package me.cwuyi.zhcollector;
 
 import me.cwuyi.zhcollector.crawler.Crawler;
+import me.cwuyi.zhcollector.zhihu.ModelLogin;
 import org.junit.Test;
 
 /**
@@ -10,9 +11,14 @@ public class CrawlerTest {
 
     @Test
     public void testUserInfoFetcher() {
+//        System.out.println(Crawler.userInfoFetcher("guo-tao-45-48"));
+    }
 
-        System.out.println(Crawler.getTopicFollower("19551147", 0));
-
+    @Test
+    public void testFollowShipFetcher() {
+//        ModelLogin login = new ModelLogin();
+//        login.login("xiayuan.y@foxmail.com", "4011604A");
+//        System.out.println(Crawler.followShipFetcher("guo-tao-45-48", true, 0));
     }
 
 

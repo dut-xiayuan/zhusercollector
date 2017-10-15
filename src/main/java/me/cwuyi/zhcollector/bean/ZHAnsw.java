@@ -18,4 +18,44 @@ public class ZHAnsw
         this.commentCount = commentCount;
         this.voteUpCount = voteUpCount;
     }
+
+    public String getAnsId()
+    {
+        return ansId;
+    }
+
+    public void setAnsId(String ansId)
+    {
+        this.ansId = ansId;
+    }
+
+    public String getPostDate()
+    {
+        return postDate;
+    }
+
+    public void setPostDate(String postDate)
+    {
+        this.postDate = postDate;
+    }
+
+    public int getCommentCount()
+    {
+        return commentCount;
+    }
+
+    public void setCommentCount(int commentCount)
+    {
+        this.commentCount = commentCount;
+    }
+
+    public int getVoteUpCount()
+    {
+        return voteUpCount;
+    }
+
+    public void setVoteUpCount(int voteUpCount)
+    {
+        this.voteUpCount = voteUpCount;
+    }
 }

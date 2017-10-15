@@ -35,8 +35,8 @@ public class UserParser {
 
         //回答 提问
         Elements tabs = doc.select(".Tabs").select(".ProfileMain-tabs").select("li");
-        int asksCount = Integer.parseInt(tabs.get(1).select("span.Tabs-meta").text());
-        int answersCount = Integer.parseInt(tabs.get(2).select("span.Tabs-meta").text());
+        int asksCount = Integer.parseInt(tabs.get(2).select("span.Tabs-meta").text());
+        int answersCount = Integer.parseInt(tabs.get(1).select("span.Tabs-meta").text());
 
         //感谢 赞同 收藏
         Elements card = doc.select(".Profile-sideColumnItems");
@@ -64,7 +64,11 @@ public class UserParser {
         likeCount = Integer.parseInt(matcher.replaceAll("").trim());
 
         String thankString = thankAndCollectedString.split("，")[0];
-        String collectedString = thankAndCollectedString.split("，")[1];
+        String collectedString = "0";
+
+        if (thankAndCollectedString.split("，").length == 2) {
+            collectedString = thankAndCollectedString.split("，")[1];
+        }
 
         matcher = pattern.matcher(thankString);
         thankCount = Integer.parseInt(matcher.replaceAll("").trim());
@@ -97,7 +101,8 @@ public class UserParser {
             String quesId = data.getString("id");
             int followCount = data.getInteger("follower_count");
             int answerCount = data.getInteger("answer_count");
-            String quesTitle = data.getString("title");
+//            String quesTitle = data.getString("title");
+            String quesTitle = "";
 
             res.add(new ZHQues(quesId, quesTitle, postDate, followCount, answerCount));
         }
