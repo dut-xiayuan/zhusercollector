@@ -39,8 +39,8 @@ public class Crawler {
 
             List<NameValuePair> pairs = new LinkedList<NameValuePair>();
             pairs.add(new BasicNameValuePair("_xsrf", xsrfValue));
-            pairs.add(new BasicNameValuePair("password", "4011604A"));
-            pairs.add(new BasicNameValuePair("email", "xiayuan.y@foxmail.com"));
+            pairs.add(new BasicNameValuePair("password", ""));
+            pairs.add(new BasicNameValuePair("email", ""));
             pairs.add(new BasicNameValuePair("captcha_type", "cn"));
 
             UrlEncodedFormEntity entity = new UrlEncodedFormEntity(pairs, Consts.UTF_8);
