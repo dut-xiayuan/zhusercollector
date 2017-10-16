@@ -41,40 +41,46 @@ public class UserParser {
         //感谢 赞同 收藏
         Elements card = doc.select(".Profile-sideColumnItems");
 
-        Elements sideColumns = card.get(0).select(".Profile-sideColumnItem");
-        Element targetEle = null;
-        if (sideColumns.size() > 2) {
-            targetEle = sideColumns.get(1);
-        } else {
-            targetEle = sideColumns.get(0);
+        int likeCount = 0, thankCount = 0, collectedCount = 0;
+
+        if (card.size() != 0) {
+            Elements sideColumns = card.get(0).select(".Profile-sideColumnItem");
+            Element targetEle = null;
+            if (sideColumns.size() > 2) {
+                targetEle = sideColumns.get(1);
+            } else {
+                targetEle = sideColumns.get(0);
+            }
+
+            //likeString 形如获得XXX次赞同
+            String likeString = "0";
+            if (targetEle.select(".IconGraf").size() > 0) {
+                likeString = targetEle.select(".IconGraf").text().trim();
+            }
+
+            //thankAndCollectedString 形如获得XXX次感谢，XXX次收藏
+            if (targetEle.select(".Profile-sideColumnItemValue").size() > 0) {
+                String thankAndCollectedString = targetEle.select(".Profile-sideColumnItemValue").text().trim();
+                String reg = "[^0-9]";
+                Pattern pattern = Pattern.compile(reg);
+
+                Matcher matcher = pattern.matcher(likeString);
+                likeCount = Integer.parseInt(matcher.replaceAll("").trim());
+
+                String thankString = thankAndCollectedString.split("，")[0];
+                String collectedString = "0";
+
+                if (thankAndCollectedString.split("，").length == 2) {
+                    collectedString = thankAndCollectedString.split("，")[1];
+                }
+
+                matcher = pattern.matcher(thankString);
+                thankCount = Integer.parseInt(matcher.replaceAll("").trim());
+
+                matcher = pattern.matcher(collectedString);
+                collectedCount = Integer.parseInt(matcher.replaceAll("").trim());
+            }
         }
-
-        //likeString 形如获得XXX次赞同
-        String likeString = targetEle.select(".IconGraf").text().trim();
-        int likeCount = -1;
-
-        //thankAndCollectedString 形如获得XXX次感谢，XXX次收藏
-        String thankAndCollectedString = targetEle.select(".Profile-sideColumnItemValue").text().trim();
-        int thankCount = -1, collectedCount = -1;
-
-        String reg = "[^0-9]";
-        Pattern pattern = Pattern.compile(reg);
-
-        Matcher matcher = pattern.matcher(likeString);
-        likeCount = Integer.parseInt(matcher.replaceAll("").trim());
-
-        String thankString = thankAndCollectedString.split("，")[0];
-        String collectedString = "0";
-
-        if (thankAndCollectedString.split("，").length == 2) {
-            collectedString = thankAndCollectedString.split("，")[1];
-        }
-
-        matcher = pattern.matcher(thankString);
-        thankCount = Integer.parseInt(matcher.replaceAll("").trim());
-
-        matcher = pattern.matcher(collectedString);
-        collectedCount = Integer.parseInt(matcher.replaceAll("").trim());
 
         zhUser.setUserId(userId);
         zhUser.setUserName(username);
@@ -146,6 +152,9 @@ public class UserParser {
 
     public static List<String> parseTopicFollower(String page) {
         List<String> res = new ArrayList<String>();
+        if (!page.startsWith("{")) {
+            return res;
+        }
         JSONObject jsonObject = JSON.parseObject(page);
         JSONArray array = jsonObject.getJSONArray("msg");
 

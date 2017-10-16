@@ -5,6 +5,8 @@ javadocs/*
 .classpath
 .project
 logs/
+*.eml
+*.userlibraries
 
 # IntelliJ IDEA
 **/.idea
